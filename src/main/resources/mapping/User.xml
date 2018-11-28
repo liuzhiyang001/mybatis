@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace作用很重要,mapper代理时: 必须与mapper接口的完整路径 -->
+<mapper namespace="com.lzy.mybatis.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lzy.mybatis.entity.User">
+    <id column="id" property="t_id" jdbcType="INTEGER"/>
+    <result column="t_name" property="name" jdbcType="VARCHAR"/>
+    <result column="t_age" property="age" jdbcType="INTEGER"/>
+    <result column="t_address" property="address" jdbcType="VARCHAR"/>
+    <result column="t_password" property="password" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column" >
+      t_id,t_name,t_age,t_address,t_password
+  </sql>
+  
+  
+  <select id="selAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column"/> from t_user
+  </select>
+
+</mapper>
